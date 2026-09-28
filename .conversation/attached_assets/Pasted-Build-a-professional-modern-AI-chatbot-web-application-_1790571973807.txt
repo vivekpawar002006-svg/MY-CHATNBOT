@@ -1,0 +1,409 @@
+Build a professional, modern AI chatbot web application for my game “Arrow Puzzle”.
+
+The chatbot should act as an intelligent Arrow Puzzle Game Assistant that can answer users’ questions professionally, naturally, and accurately.
+
+1. Main Goal
+
+Create a production-ready chatbot named:
+
+Arrow Puzzle AI
+
+It should help players with:
+
+* How to play Arrow Puzzle
+* Game rules
+* Arrow movement
+* Puzzle-solving hints
+* Level-related questions
+* Gameplay strategies
+* Tips and tricks
+* Difficulty-related questions
+* General questions about the game
+* Troubleshooting
+* Feedback and suggestions
+* Questions about future game features
+
+The chatbot should feel like a real professional AI assistant, not a basic question-answer bot.
+
+2. AI MODEL
+
+Use the Groq API for AI responses.
+
+The Groq API key MUST NEVER be exposed in frontend/client-side code.
+
+Use an environment variable:
+
+GROQ_API_KEY
+
+Create a secure backend/API route that communicates with Groq.
+
+The frontend should send the user’s message to our backend, and the backend should call Groq.
+
+Use a suitable current Groq-supported model, but keep the model configurable through an environment variable:
+
+GROQ_MODEL
+
+Default to a fast and capable model suitable for chatbot conversations.
+
+3. SYSTEM PROMPT FOR THE AI
+
+Give the AI a strong system prompt similar to:
+
+“You are Arrow Puzzle AI, the official intelligent assistant for Arrow Puzzle.
+
+Your job is to help players understand and enjoy Arrow Puzzle.
+
+Answer questions clearly, professionally and naturally.
+
+Always prioritize accuracy.
+
+If the user asks about Arrow Puzzle gameplay, explain things in simple language with useful examples.
+
+If the user asks for a puzzle hint, DO NOT immediately reveal the complete solution unless they specifically ask for it. First provide a small hint that helps them think.
+
+If the user asks for a complete solution, provide it step-by-step when enough information is available.
+
+Never pretend to know a specific level layout if the user has not provided the level information.
+
+If you do not know something about the game, honestly say that you don’t have enough information instead of making up facts.
+
+You can also answer general questions, but keep the conversation relevant and useful.
+
+Be friendly, professional, concise and helpful.
+
+Do not use unnecessary technical language.
+
+When explaining gameplay, use numbered steps when appropriate.
+
+The assistant represents Arrow Puzzle and should maintain a polished gaming-product personality.”
+
+Make the system prompt easy to edit later.
+
+4. UI / DESIGN
+
+Create a premium gaming-style interface.
+
+The design should be:
+
+* Modern
+* Clean
+* Minimal
+* Professional
+* Responsive
+* Mobile-first
+* Desktop-friendly
+
+Main screen:
+
+Top navigation:
+
+* Arrow Puzzle logo/name
+* “AI Assistant”
+* New Chat button
+
+Chat area:
+
+* AI messages on the left
+* User messages on the right
+* Beautiful message bubbles
+* Smooth animations
+* Markdown support
+* Proper code formatting if needed
+* Timestamps
+* Loading animation while AI is thinking
+
+Input area:
+
+* Large message input
+* Send button
+* Enter = send
+* Shift + Enter = new line
+* Disable send button while empty
+* Loading state while generating response
+
+Add suggested questions when the chat is empty:
+
+“🎮 How do I play Arrow Puzzle?”
+
+“🧩 Give me a hint”
+
+“💡 What is the best strategy?”
+
+“🚀 How can I solve difficult levels?”
+
+“❓ What is Arrow Puzzle?”
+
+5. CHAT EXPERIENCE
+
+Implement:
+
+* Streaming AI responses if supported by Groq
+* Typing/loading indicator
+* Auto-scroll to latest message
+* Stop generating button if possible
+* Retry failed response
+* Copy AI response button
+* Clear chat
+* New chat
+* Error handling
+* Network error handling
+* API error handling
+
+Do not make the UI freeze while the AI is responding.
+
+6. CHAT HISTORY
+
+For the first version, store chat history locally using localStorage.
+
+Users should be able to:
+
+* Start a new chat
+* Continue previous conversation
+* Clear conversation
+
+Structure the code so a database can be added later.
+
+7. SECURITY
+
+Important:
+
+Never put GROQ_API_KEY in frontend JavaScript.
+
+Use a secure server-side API endpoint such as:
+
+/api/chat
+
+Frontend → /api/chat → Groq API → response → frontend
+
+Validate user input on the server.
+
+Add reasonable limits to prevent abuse.
+
+Do not expose the API key in error messages.
+
+Do not hard-code secrets.
+
+Use environment variables.
+
+8. VERCEL DEPLOYMENT
+
+The project must be fully compatible with Vercel.
+
+Create the project structure so it can be deployed directly to Vercel.
+
+Include:
+
+* Environment variable support
+* Production build
+* API routes compatible with Vercel
+* Proper error handling
+* README with deployment instructions
+
+The README should explain:
+
+1. How to install dependencies
+2. How to run locally
+3. How to add GROQ_API_KEY
+4. How to configure GROQ_MODEL
+5. How to deploy to Vercel
+6. How to add environment variables in Vercel
+
+9. TECHNOLOGY
+
+Use a modern stack.
+
+Preferred:
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Groq API
+* Vercel
+
+Use clean reusable components.
+
+Suggested structure:
+
+components/
+ChatWindow
+ChatMessage
+ChatInput
+Header
+SuggestedQuestions
+LoadingIndicator
+
+app/
+page
+api/chat
+
+lib/
+groq
+prompts
+
+Keep frontend and backend responsibilities separate.
+
+10. RESPONSIVE DESIGN
+
+The chatbot must work perfectly on:
+
+* iPhone
+* Android
+* Tablet
+* Laptop
+* Desktop
+
+On mobile:
+
+* Chat should use the full available screen
+* Input should remain easily accessible
+* Keyboard should not break the layout
+* Buttons should be touch-friendly
+
+11. PROFESSIONAL DETAILS
+
+Add:
+
+* Beautiful empty state
+* Smooth message animations
+* Professional typography
+* Proper spacing
+* Accessible buttons
+* Keyboard navigation
+* ARIA labels where appropriate
+* Dark gaming theme
+* Subtle visual effects
+
+Do NOT make it look childish.
+
+It should look like a real commercial gaming AI assistant.
+
+12. BRANDING
+
+Brand name:
+
+Arrow Puzzle
+
+AI name:
+
+Arrow Puzzle AI
+
+Use Arrow Puzzle branding throughout the interface.
+
+Keep the logo area simple and professional.
+
+Do not create unnecessary complicated graphics.
+
+13. AI RESPONSE QUALITY
+
+The AI should avoid:
+
+* Making up game mechanics
+* Inventing levels
+* Giving fake information
+* Repeating the same answer unnecessarily
+* Extremely long responses for simple questions
+
+For simple questions:
+Give short, direct answers.
+
+For complex questions:
+Give structured explanations.
+
+Example:
+
+User:
+“How do I solve this level?”
+
+AI:
+“Sure! Send me a screenshot of the level and I’ll analyze the arrow directions and give you a step-by-step hint.”
+
+If an image-upload system is not implemented yet, clearly tell the user to describe the level instead.
+
+14. FUTURE-READY ARCHITECTURE
+
+Structure the application so we can later add:
+
+* Image upload
+* Screenshot analysis
+* Voice input
+* User accounts
+* Database
+* Chat history
+* Level database
+* Leaderboards
+* Game statistics
+* Admin dashboard
+* Multiple AI models
+
+Do not implement unnecessary features now, but keep the architecture extensible.
+
+15. ERROR STATES
+
+If Groq API fails, show a friendly message:
+
+“Sorry, I’m having trouble connecting right now. Please try again in a moment.”
+
+Do not show technical API errors to users.
+
+Handle:
+
+* Missing API key
+* Rate limits
+* Invalid request
+* Network errors
+* Empty messages
+* Unexpected AI responses
+
+16. README
+
+Create a professional README containing:
+
+Project overview
+Features
+Tech stack
+Installation
+Environment variables
+Local development
+Groq setup
+Vercel deployment
+Security notes
+Future improvements
+
+Example environment variables:
+
+GROQ_API_KEY=your_api_key_here
+GROQ_MODEL=your_model_here
+
+Do not put any real API key in the repository.
+
+17. FINAL REQUIREMENT
+
+Build the application completely.
+
+Do not only create a UI mockup.
+
+The chatbot must actually work with the Groq API.
+
+Test the complete flow:
+
+User message
+→ Frontend
+→ Backend /api/chat
+→ Groq API
+→ AI response
+→ Frontend chat
+
+Fix all TypeScript/build/runtime errors before finishing.
+
+Make the final project clean, professional, responsive, secure and ready for Vercel deployment.
+
+After building, provide a short explanation of:
+
+* What was created
+* How to run it
+* Which environment variables are required
+* How to deploy it on Vercel
+* Where the Groq API integration is located
+
+Do not expose any API keys or secrets.
