@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Arrow Puzzle AI"
+description = "A professional AI game assistant for Arrow Puzzle that answers gameplay questions, offers contextual hints, and helps players solve levels through a polished responsive chat experience."
+version = "1.0.0"
+id = "artifacts/arrow-puzzle-ai"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 20304
+
+[services.development]
+run = "pnpm --filter @workspace/arrow-puzzle-ai run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/arrow-puzzle-ai", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/arrow-puzzle-ai/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "20304"
+BASE_PATH = "/"

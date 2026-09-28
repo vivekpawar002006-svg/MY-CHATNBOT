@@ -1,0 +1,1 @@
+- [Groq model availability](groq-model-availability.md) — validate defaults against the live account model catalog because access changes by account.

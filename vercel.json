@@ -1,0 +1,7 @@
+{
+  "buildCommand": "PORT=20304 BASE_PATH=/ pnpm --filter @workspace/arrow-puzzle-ai run build",
+  "outputDirectory": "artifacts/arrow-puzzle-ai/dist/public",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
